@@ -10,7 +10,6 @@ class SpotifyContainer extends Component {
     return <div className='SpotifyContainer'>
       {/* SearchForm */}
       <SearchForm />
-
       {/* Results Container */}
       <ResultsContainer />
       </div>;
