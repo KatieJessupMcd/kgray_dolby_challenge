@@ -4,13 +4,24 @@ import ResultsContainer from './ResultsContainer';
 // import './SpotifyContainer.css';
 
 class SpotifyContainer extends Component {
-  static defaultProps = {};
+  constructor(props) {
+    super(props); 
+    this.state = {
+      album: {}
+    }
+    this.addAlbum = this.addAlbum.bind(this); 
+  }
+
+  addAlbum(album) {
+    this.setState({album: album})
+  }
+
   render() {
     return <div className='SpotifyContainer'>
       {/* SearchForm */}
-      <SearchForm />
+      <SearchForm addAlbum={this.addAlbum}/>
       {/* Results Container */}
-      <ResultsContainer />
+      <ResultsContainer albumImg={this.state.album} />
       </div>;
   }
 }

@@ -4,7 +4,10 @@ import axios from 'axios';
 class SearchForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {value: ''};
+    this.state = {
+      value: '',
+      albumResult: ''
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -20,21 +23,22 @@ class SearchForm extends Component {
 
     let query = this.state.value
     this.searchArtistAlbum(query);
-   
+    this.props.addAlbum(this.albumResult); 
+    this.setState({value: '', albumResult: ''}); 
   }
 
   searchArtistAlbum(query) {
-    console.log(query);
     const data = {
       q: query,
       type: 'album'
     };
 
-    // TODO where to save token
     axios.get(`https://api.spotify.com/v1/search`, {params: data}, {headers: {Authorization: }})
       .then(res => {
-        console.log(res);
-        console.log(res.data);
+        let albumData = res.data.albums.items[0]; 
+        this.setState({albumResult: albumData}); 
+        // console.log("VVV"); 
+        // console.log(albumData);
       })
   }
 
@@ -42,7 +46,7 @@ class SearchForm extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          Name:
+          Artist name:
           <input type="text" value={this.state.value} onChange={this.handleChange} />
         </label>
         <input type="submit" value="Submit" />
