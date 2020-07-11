@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class SearchForm extends Component {
   constructor(props) {
@@ -7,6 +8,7 @@ class SearchForm extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.searchArtistAlbum = this.searchArtistAlbum.bind(this);
   }
 
   handleChange(event) {
@@ -14,8 +16,26 @@ class SearchForm extends Component {
   }
 
   handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.value);
     event.preventDefault();
+
+    let query = this.state.value
+    this.searchArtistAlbum(query);
+   
+  }
+
+  searchArtistAlbum(query) {
+    console.log(query);
+    const data = {
+      q: query,
+      type: 'album'
+    };
+
+    // TODO where to save token
+    axios.get(`https://api.spotify.com/v1/search`, {params: data}, {headers: {Authorization: }})
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+      })
   }
 
   render() {
