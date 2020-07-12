@@ -23,7 +23,7 @@ const config = {
 };
 
 // get token response
-app.get('/', async function (req, res, next) {
+app.get('/auth', async function (req, res, next) {
   try {
     const access_token = await axios
       .post(
@@ -45,5 +45,14 @@ app.get('/', async function (req, res, next) {
     return next(e);
   }
 });
+
+app.get('/search', async function (req, res, next) {
+  try {
+    return res.json({"hello": "hello"});
+  } catch (e) {
+    return next(e);
+  }
+});
+
 
 app.listen(3001, () => console.log('Server started on 3001'));

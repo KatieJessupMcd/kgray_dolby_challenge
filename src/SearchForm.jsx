@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import SpotifyApi from './SpotifyApi';
 
 class SearchForm extends Component {
   constructor(props) {
@@ -6,7 +7,6 @@ class SearchForm extends Component {
     this.state = {
       value: '',
       albumResult: '',
-      accessToken: '',
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -28,7 +28,11 @@ class SearchForm extends Component {
   }
 
   // TODO grab inputs from from to query spotify api endpoint, also need to add that endpoint on proxy server
-  searchArtistAlbum(query) {}
+  async searchArtistAlbum(query) {
+    let result = await SpotifyApi.searchForArtistAlbum(query); 
+    console.log("we got the result on the front end");
+    console.log(result); 
+  }
 
   render() {
     return (

@@ -20,10 +20,6 @@ class SpotifyContainer extends Component {
     window.addEventListener('load', SpotifyApi.getAccessToken());
   }
 
-  componentDidUpdate() {
-    window.addEventListener('load', SpotifyApi.getAccessToken());
-  }
-
   render() {
     return (
       <div className="SpotifyContainer">
