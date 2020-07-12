@@ -1,28 +1,36 @@
 import React, { Component } from 'react';
 import SearchForm from './SearchForm';
 import ResultsContainer from './ResultsContainer';
-// import './SpotifyContainer.css';
+import SpotifyApi from './SpotifyApi';
 
 class SpotifyContainer extends Component {
   constructor(props) {
-    super(props); 
+    super(props);
     this.state = {
-      album: {}
-    }
-    this.addAlbum = this.addAlbum.bind(this); 
+      album: {},
+    };
+    this.addAlbum = this.addAlbum.bind(this);
   }
 
   addAlbum(album) {
-    this.setState({album: album})
+    this.setState({ album: album });
+  }
+
+  componentDidMount() {
+    window.addEventListener('load', SpotifyApi.getAccessToken());
+  }
+
+  componentDidUpdate() {
+    window.addEventListener('load', SpotifyApi.getAccessToken());
   }
 
   render() {
-    return <div className='SpotifyContainer'>
-      {/* SearchForm */}
-      <SearchForm addAlbum={this.addAlbum}/>
-      {/* Results Container */}
-      <ResultsContainer albumImg={this.state.album} />
-      </div>;
+    return (
+      <div className="SpotifyContainer">
+        <SearchForm addAlbum={this.addAlbum} />
+        <ResultsContainer albumImg={this.state.album} />
+      </div>
+    );
   }
 }
 
