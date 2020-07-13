@@ -7,24 +7,25 @@ class SpotifyContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      album: {},
+      albumData: {},
+      displayAlbum: false
     };
-    this.addAlbum = this.addAlbum.bind(this);
+    this.searchAlbums = this.searchAlbums.bind(this);
   }
 
-  addAlbum(album) {
-    this.setState({ album: album });
-  }
-
-  componentDidMount() {
-    window.addEventListener('load', SpotifyApi.getAccessToken());
+  async searchAlbums(query) {
+    let queryResult = await SpotifyApi.searchForArtistAlbum(query);
+    this.setState({
+      albumData: queryResult,
+      displayAlbum: true
+    });
   }
 
   render() {
     return (
       <div className="SpotifyContainer">
-        <SearchForm addAlbum={this.addAlbum} />
-        <ResultsContainer albumImg={this.state.album} />
+        <SearchForm handleSearch={this.searchAlbums} />
+        <ResultsContainer displayAlbum={this.state.displayAlbum} albumData={this.state.albumData} />
       </div>
     );
   }
