@@ -11,6 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 let client_id = 'CLIENT_ID';
 let client_secret = 'CLIENT_SECRET';
 
+
 const post_data = {
   grant_type: 'client_credentials',
 };
@@ -50,22 +51,40 @@ app.get('/', async function (req, res, next) {
       params: {
         q: query,
         type: 'album',
-      },
+      }
     };
     // get album using access token
     let album = await axios
       .get(`https://api.spotify.com/v1/search`, getAlbumConfig)
       .then((r) => {
-        let albumData = r.data.albums.items[0];
-        console.log(albumData)
+        let albumData = r.data.albums.items[0]; 
         return albumData;
       })
       .catch((err) => {
         console.error(err);
       });
-
+      
+      const albumId = album.id; 
       // todo query album track info
-    res.send(album);
+      const getTrackConfig = {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          Authorization: 'Bearer ' + access_token.access_token,
+        }
+      };
+
+      let trackPreviewUrl = await axios
+      .get(`https://api.spotify.com/v1/albums/${albumId}`, getTrackConfig)
+      .then((r) => { 
+        let trackData = r.data.tracks.items[0].preview_url
+        return trackData; 
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+
+      // VV what we send back to the client after all those calls are complete
+    res.send({album: album, trackPreviewUrl: trackPreviewUrl});
   } catch (e) {
     return next(e);
   }

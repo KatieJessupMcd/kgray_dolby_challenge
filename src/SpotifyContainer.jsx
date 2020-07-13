@@ -16,7 +16,7 @@ class SpotifyContainer extends Component {
   async searchAlbums(query) {
     let queryResult = await SpotifyApi.searchForArtistAlbum(query);
     this.setState({
-      albumData: queryResult,
+      albumData: queryResult.data,
       displayAlbum: true
     });
   }

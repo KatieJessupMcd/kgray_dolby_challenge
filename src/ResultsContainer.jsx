@@ -6,8 +6,9 @@ class ResultsContainer extends Component {
     if (this.props.displayAlbum){
       return (
         <div className="ResultsContainer" id="album-cover">
-        Album Name: {this.props.albumData.name}
-        Album Image: <div><img src={this.props.albumData.images[0].url} alt="albumImage" className="img-responsive"/></div>
+        Album Name: {this.props.albumData.album.name}
+        Album Image: <div><img src={this.props.albumData.album.images[0].url} alt="albumImage" className="img-responsive"/></div>
+        Album Preview URL: {this.props.albumData.trackPreviewUrl}
       </div> 
       )
     } else {
