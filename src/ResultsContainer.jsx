@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import hitclipImg from './Hitclip1.png';
+import hitclipImg from './Hitclip2.png';
 import blackSquare from './blackSquare.png';
+
 class ResultsContainer extends Component {
   constructor(props) {
     super(props);
@@ -26,7 +27,7 @@ class ResultsContainer extends Component {
             onClick={this.playAudio}
           >
             <div
-              className="container"
+              className="playerContainer"
               style={{
                 position: 'relative',
                 display: 'flex',
@@ -76,7 +77,7 @@ class ResultsContainer extends Component {
         <div className="row mt-5">
           <div className="ResultsContainer col-sm-6 offset-sm-3 pt-4">
             <div
-              className="container"
+              className="playerContainer"
               style={{
                 position: 'relative',
                 display: 'flex',

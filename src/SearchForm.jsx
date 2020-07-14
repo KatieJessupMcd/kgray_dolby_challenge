@@ -24,7 +24,7 @@ class SearchForm extends Component {
   render() {
     return (
       <div className="row">
-        <div className="card col-md-4 offset-md-4 special-card">
+        <div className="col-md-4 offset-md-4">
           <div className="card-body p-1.25"></div>
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
@@ -39,8 +39,8 @@ class SearchForm extends Component {
                 placeholder="Enter album keyword"
               />
             </div>
-            <button type="submit" value="submit" className="btn btn-primary mb-3">
-              Search
+            <button type="submit" value="submit" className="btn btn-info mb-3">
+              SEARCH
             </button>
           </form>
         </div>
