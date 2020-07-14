@@ -25,8 +25,7 @@ const post_config = {
 // get token response
 app.get('/', async function (req, res, next) {
   try {
-    // make request to get access_token
-    const access_token = await axios
+    const accessToken = await axios
       .post(
         'https://accounts.spotify.com/api/token',
         qs.stringify(post_data),
@@ -35,7 +34,7 @@ app.get('/', async function (req, res, next) {
       .then((response) => {
         console.log(`Status: ${response.status}`);
         console.log('Body: ', response.data);
-        return response.data;
+        return response.data.access_token;
       })
       .catch((err) => {
         console.error(err);
@@ -45,45 +44,44 @@ app.get('/', async function (req, res, next) {
     const getAlbumConfig = {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
-        Authorization: 'Bearer ' + access_token.access_token,
+        Authorization: 'Bearer ' + accessToken,
       },
       params: {
         q: query,
         type: 'album',
-      }
+      },
     };
+
     // get album using access token
     let album = await axios
       .get(`https://api.spotify.com/v1/search`, getAlbumConfig)
       .then((r) => {
-        let albumData = r.data.albums.items[0]; 
+        let albumData = r.data.albums.items[0];
         return albumData;
       })
       .catch((err) => {
         console.error(err);
       });
-      
-      const albumId = album.id; 
-      // todo query album track info
-      const getTrackConfig = {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          Authorization: 'Bearer ' + access_token.access_token,
-        }
-      };
 
-      let trackPreviewUrl = await axios
+    const albumId = album.id;
+    const getTrackConfig = {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization: 'Bearer ' + accessToken,
+      },
+    };
+
+    let trackPreviewUrl = await axios
       .get(`https://api.spotify.com/v1/albums/${albumId}`, getTrackConfig)
-      .then((r) => { 
-        let trackData = r.data.tracks.items[0].preview_url
-        return trackData; 
+      .then((r) => {
+        let trackData = r.data.tracks.items[0].preview_url;
+        return trackData;
       })
       .catch((err) => {
         console.error(err);
       });
 
-      // VV what we send back to the client after all those calls are complete
-    res.send({album: album, trackPreviewUrl: trackPreviewUrl});
+    res.send({ album: album, trackPreviewUrl: trackPreviewUrl });
   } catch (e) {
     return next(e);
   }
