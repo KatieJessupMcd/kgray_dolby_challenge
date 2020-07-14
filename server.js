@@ -11,7 +11,6 @@ app.use(express.urlencoded({ extended: true }));
 let client_id = 'CLIENT_ID';
 let client_secret = 'CLIENT_SECRET';
 
-
 const post_data = {
   grant_type: 'client_credentials',
 };

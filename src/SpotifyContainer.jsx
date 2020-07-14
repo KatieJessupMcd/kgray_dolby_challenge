@@ -23,7 +23,7 @@ class SpotifyContainer extends Component {
 
   render() {
     return (
-      <div className="SpotifyContainer">
+      <div className="SpotifyContainer container-fluid">
         <SearchForm handleSearch={this.searchAlbums} />
         <ResultsContainer displayAlbum={this.state.displayAlbum} albumData={this.state.albumData} />
       </div>
