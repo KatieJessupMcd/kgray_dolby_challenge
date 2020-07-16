@@ -6,7 +6,7 @@ The other day I was waxing nostalgic on the glory that was the HitClips player. 
 With this HitClips Player, you too can relive the magic! With HitClips player, you can search for an album keyword, and an album cover will appear. Once you click it, you can jam out to a 30 second clip like it’s 1999.
 
 
-### Setup
+### Setup and Run Project Locally
 
 To clone the repository, run: 
 
@@ -36,4 +36,6 @@ nodemon server.js
 ```
 The app should now be running in your browser
 
-This project utilizes the Spotify Web API to query and load album data. Additionally, the application needs to be authorized in order to access the Spotify API. This application uses the *client credential* flow for authorization. You will need to log into [Spotify for Developers](https://developer.spotify.com/dashboard/login). There, you can go into your dashboard, create and app, and gain a `Client ID` and `Client Secret`. These are the values you will replace `CLIENT_ID` and `CLIENT_SECRET` in `server.js`. 
+This project utilizes the Spotify Web API to query and load album data. Additionally, the application needs to be authorized in order to access the Spotify API. This application uses the *client credential* flow for authorization. You will need to log into [Spotify for Developers](https://developer.spotify.com/dashboard/login). 
+
+There, you can go into your dashboard, create and app, and gain a `Client ID` and `Client Secret`. Make a copy of the file `.env.example` as `.env`, and set the values of `CLIENT_ID` and `CLIENT_SECRET`. 
