@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: true })); // for parsing application/x-ww
 const client_id = process.env.CLIENT_ID;
 const client_secret = process.env.CLIENT_SECRET;
 
-app.get('/', async function (req, res, next) {
+app.get('/search', async function (req, res, next) {
   try {
     // Set up data/headers for access token request
     let postData = {
