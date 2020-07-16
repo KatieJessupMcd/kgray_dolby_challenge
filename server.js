@@ -1,4 +1,5 @@
 var environment = process.env.NODE_ENV || 'development';
+var port = process.env.PORT || 3001
 if (environment !== 'production') {
   require('dotenv').config();
 }
@@ -92,4 +93,4 @@ app.get('/', async function (req, res, next) {
   }
 });
 
-app.listen(3001, () => console.log('Server started on 3001'));
+app.listen(port, () => console.log(`Server started on ${port}`));
