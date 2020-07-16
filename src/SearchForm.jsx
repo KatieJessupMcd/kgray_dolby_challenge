@@ -33,7 +33,7 @@ class SearchForm extends Component {
                 className="form-control form-control-lg"
                 id="albumNameInput"
                 name="search"
-                aria-describedby="emailHelp"
+                aria-describedby="searchForm"
                 value={this.state.search}
                 onChange={this.handleChange}
                 placeholder="Enter album keyword"

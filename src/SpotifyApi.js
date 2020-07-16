@@ -3,7 +3,7 @@ import axios from 'axios';
 const BASE_URL = 'http://localhost:3001/';
 
 class SpotifyApi {
-  static async searchForArtistAlbum(query) {
+  static async search(query) {
     try {
       const response = await axios.get(`${BASE_URL}`, { params: { q: query } });
       return response;

@@ -1,3 +1,8 @@
+var environment = process.env.NODE_ENV || 'development';
+if (environment !== 'production') {
+  require('dotenv').config();
+}
+
 const express = require('express');
 const cors = require('cors');
 const app = express();
@@ -8,12 +13,12 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const client_id = 'CLIENT_ID';
-const client_secret = 'CLIENT_SECRET';
+const client_id = process.env.CLIENT_ID;
+const client_secret = process.env.CLIENT_SECRET;
 
 app.get('/', async function (req, res, next) {
   try {
-    // Set up headers/data for access token request
+    // Set up data/headers for access token request
     let postData = {
       grant_type: 'client_credentials',
     };
@@ -23,7 +28,7 @@ app.get('/', async function (req, res, next) {
         Authorization:
           'Basic ' +
           new Buffer(client_id + ':' + client_secret).toString('base64'),
-      },
+      }
     };
 
     // Get access token
