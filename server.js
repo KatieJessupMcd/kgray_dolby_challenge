@@ -1,5 +1,4 @@
-var environment = process.env.NODE_ENV || 'development';
-var port = process.env.PORT || 3001
+const environment = process.env.NODE_ENV || 'development';
 if (environment !== 'production') {
   require('dotenv').config();
 }
@@ -14,21 +13,10 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
-if (process.env.NODE_ENV === 'production') {
-  // Exprees will serve up production assets
-  app.use(express.static('public'));
-
-  // Express serve up index.html file if it doesn't recognize route
-  const path = require('path');
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
-  });
-}
-
 const client_id = process.env.CLIENT_ID;
 const client_secret = process.env.CLIENT_SECRET;
 
-app.get('/search', async function (req, res, next) {
+app.get('/', async function (req, res, next) {
   try {
     // Set up data/headers for access token request
     let postData = {
@@ -104,4 +92,4 @@ app.get('/search', async function (req, res, next) {
   }
 });
 
-app.listen(port, () => console.log(`Server started on ${port}`));
+app.listen(3001, () => console.log('Server started on 3001'));

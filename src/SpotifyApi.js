@@ -5,7 +5,7 @@ const BASE_URL = 'http://localhost:3001';
 class SpotifyApi {
   static async search(query) {
     try {
-      const response = await axios.get(`${BASE_URL}/search`, { params: { q: query } });
+      const response = await axios.get(`${BASE_URL}/`, { params: { q: query } });
       return response;
     } catch (err) {
       console.error('API Error:', err.response);

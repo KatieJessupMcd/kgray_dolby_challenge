@@ -37,7 +37,7 @@ class SearchForm extends Component {
                 value={this.state.search}
                 onChange={this.handleChange}
                 placeholder="Enter album keyword"
-              />
+                required />
             </div>
             <button type="submit" value="submit" className="btn btn-info mb-3">
               SEARCH
