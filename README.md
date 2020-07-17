@@ -1,8 +1,7 @@
 ## HitClips Player
 by Katie Gray
 
-![Alt text](./screen_shot.png?raw=true "hitclips_scrnshot")
-
+[![hitclips_screenshot](https://i.postimg.cc/cJtmcsBJ/Screen-Shot-2020-07-15-at-9-14-24-AM.png)](https://postimg.cc/06xDk13g)
 
 The other day I was waxing nostalgic on the glory that was the HitClips player. If you are not familiar, the HitClips player was a digital audio player from 1999 that played ultra-lo-fi mono one-minute clips of pop songs. I spent many a minute as a youth with the single earbud in my ear, jamming out to short renditions of NSYNC. 
 
