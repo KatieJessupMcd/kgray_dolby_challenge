@@ -1,6 +1,9 @@
 ## HitClips Player
 by Katie Gray
 
+![Alt text](./screen_shot.png?raw=true "hitclips_scrnshot")
+
+
 The other day I was waxing nostalgic on the glory that was the HitClips player. If you are not familiar, the HitClips player was a digital audio player from 1999 that played ultra-lo-fi mono one-minute clips of pop songs. I spent many a minute as a youth with the single earbud in my ear, jamming out to short renditions of NSYNC. 
 
 With this HitClips Player, you too can relive the magic! With HitClips player, you can search for an album keyword, and an album cover will appear. Once you click it, you can jam out to a 30 second clip like it’s 1999.
